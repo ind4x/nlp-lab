@@ -124,5 +124,10 @@ Execute all cells sequentially to run data ingestion, text preprocessing, model 
 - **Data Engineering:** Pandas, NumPy
 - **Natural Language Processing:** NLTK, Regular Expressions (`re`)
 - **Machine Learning:** Scikit-learn (`CountVectorizer`, `MultinomialNB`, `LabelEncoder`, `metrics`)
-- **Institution:** Mundiapolis University, Engineering Cycle
+
+---
+
+## Author
+
 - **Author:** Youssef Fellah ([ind4x_](https://github.com/ind4x))
+- **Institution:** Mundiapolis University, Engineering Cycle

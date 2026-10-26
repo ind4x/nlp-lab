@@ -73,8 +73,7 @@ Navigate to:
 
 ---
 
-## Author & Academic Affiliation
+## Author
 
 - **Author:** Youssef Fellah ([ind4x_](https://github.com/ind4x))
-- **Program:** Engineering Cycle (Software Engineering & Architecture)
-- **Institution:** Mundiapolis University
+- **Institution:** Mundiapolis University, Engineering Cycle

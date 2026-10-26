@@ -15,5 +15,9 @@ Learning curriculum.
   weight initialization ($w=0, b=0$), learning rate scheduling, and Mean Squared
   Error (MSE) updates across discrete iterations.
 
-Authored by Youssef Fellah.
-Developed for the Engineering Cycle at Mundiapolis University.
+---
+
+## Author
+
+- **Author:** Youssef Fellah ([ind4x_](https://github.com/ind4x))
+- **Institution:** Mundiapolis University, Engineering Cycle

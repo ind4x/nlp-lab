@@ -113,5 +113,10 @@ Execute all cells to verify the analytical calculus derivations against Python n
 - **Numerical Computing:** NumPy (vectorized multidimensional array calculus)
 - **Data Structuring:** Pandas
 - **Interactive Development:** Jupyter Notebook, VS Code
-- **Institution:** Mundiapolis University, Engineering Cycle
+
+---
+
+## Author
+
 - **Author:** Youssef Fellah ([ind4x_](https://github.com/ind4x))
+- **Institution:** Mundiapolis University, Engineering Cycle
