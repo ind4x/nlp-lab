@@ -1,80 +1,128 @@
-# Spam classification with Multinomial Naive Bayes
+# Spam Classification with Multinomial Naive Bayes
 
-This laboratory implements a supervised natural language processing pipeline
-to classify text communications as either legitimate (*ham*) or unsolicited
-(*spam*). The implementation demonstrates end-to-end NLP engineering: raw text
-sanitization, vocabulary tokenization, bag-of-words vectorization, and
-probabilistic classification using the Multinomial Naive Bayes algorithm.
+This laboratory implements an end-to-end supervised natural language processing (NLP)
+pipeline to classify text communications as either legitimate (*ham*) or unsolicited (*spam*).
+The project demonstrates raw text preprocessing, vocabulary tokenization, bag-of-words
+sparse vectorization, and probabilistic Bayesian inference.
 
-## Contents
+---
 
-- Implementation notebook: [main.ipynb](./main.ipynb) containing the complete
-  preprocessing pipeline, model training, evaluation metrics, and sample
-  inference tests.
-- Dataset: [SpamCollection.txt](./SpamCollection.txt) containing 5,574 labeled
-  SMS and email messages formatted in tab-separated values.
+## Lab Structure
 
-## Methodology
+```text
+MultinomialNB/
+├── README.md                          # Technical specification, pipeline architecture, and metrics
+├── SpamCollection.txt                 # Labeled SMS/email dataset (5,574 samples, TSV format)
+└── main.ipynb                         # Complete interactive pipeline implementation and evaluation
+```
 
-### 1. Exploratory data analysis and label encoding
-The raw dataset consists of two columns: `Label` and `Message`. Inspection
-confirms zero missing records. The categorical target strings (`ham` and
-`spam`) are mapped to binary numeric targets ($0$ for ham, $1$ for spam) using
-`LabelEncoder`.
+### File Responsibilities
 
-### 2. Text preprocessing and cleaning
-Raw text is normalized through custom preprocessing logic:
-- Case normalization: all text strings are converted to lowercase.
-- Character filtering: non-alphabetic characters are stripped using regular
-  expressions (`re.sub('[^a-z]', ' ', text)`).
-- Tokenization and stopword removal: words are split into tokens and filtered
-  against NLTK's standard English stopword lexicon to eliminate non-informative
-  syntactic noise.
+- **`main.ipynb`**: Interactive notebook executing data ingestion, exploratory label balance analysis, regex sanitation, NLTK stopword filtering, sparse feature matrix construction via `CountVectorizer`, `MultinomialNB` model training, holdout evaluation, confusion matrix generation, and arbitrary text inference.
+- **`SpamCollection.txt`**: Standard benchmark corpus consisting of 5,574 labeled communications (4,825 ham, 747 spam).
 
-### 3. Feature extraction (Bag of Words)
-After splitting the data into training and testing partitions, text sequences
-are mapped into high-dimensional numerical vectors using `CountVectorizer`.
-This step builds an ngram vocabulary across the training corpus and transforms
-each message into a sparse word-count occurrence vector.
+---
 
-### 4. Classifier training
-The transformed feature space is fitted using Scikit-learn's `MultinomialNB`
-estimator. The multinomial distribution models discrete word count frequencies,
-applying Laplace smoothing to handle zero-frequency terms in unseen test
-messages.
+## Pipeline Architecture & Methodology
 
-## Experimental results
+The classification pipeline processes unstructured text through five distinct stages:
 
-The model was evaluated on a test holdout partition of 1,115 samples:
+```text
++-----------------------+
+|  Raw Text Message     |  e.g., "Congratulations! You won a $1000 prize. Call now!"
++-----------------------+
+            |
+            v
++-----------------------+
+|  Text Normalization   |  - Lowercase conversion
+|  & Regex Sanitization |  - Strip non-alphabetical tokens: re.sub('[^a-z]', ' ', text)
++-----------------------+
+            |
+            v
++-----------------------+
+|  Stopword Filtering   |  - Tokenize into discrete words
+|  (NLTK English Lex.)  |  - Remove non-discriminative syntax (e.g., "you", "a", "now")
++-----------------------+
+            |
+            v
++-----------------------+
+|  Feature Extraction   |  - Build vocabulary from training corpus
+|  (CountVectorizer)    |  - Transform message into high-dimensional sparse vector: x in R^{1 x V}
++-----------------------+
+            |
+            v
++-----------------------+
+|  Multinomial NB       |  - Compute posterior: P(Spam | x) proportional to P(Spam) prod P(w_j | Spam)
+|  Classifier           |  - Laplace smoothing (alpha = 1.0) prevents zero-frequency zero-out
++-----------------------+
+            |
+            v
++-----------------------+
+|  Class Prediction     |  Output: 1 (Spam) or 0 (Ham)
++-----------------------+
+```
+
+### Mathematical Formulation
+The classifier assigns class $c^* \in \{\text{ham}, \text{spam}\}$ using Bayes' rule under conditional independence assumptions:
+
+$$c^* = \arg\max_{c \in \{0, 1\}} P(c) \prod_{j=1}^{V} P(w_j \mid c)^{x_j}$$
+
+Where conditional word likelihoods utilize Laplace additive smoothing ($\alpha = 1$):
+
+$$P(w_j \mid c) = \frac{N_{c, j} + \alpha}{N_c + \alpha \cdot |V|}$$
+
+---
+
+## Experimental Results
+
+Evaluated on an independent holdout test partition of 1,115 samples (80/20 train-test split):
 
 | Class | Precision | Recall | F1-Score | Support |
 | :--- | :--- | :--- | :--- | :--- |
 | **Ham (0)** | 0.99 | 1.00 | 1.00 | 970 |
 | **Spam (1)** | 0.97 | 0.97 | 0.97 | 145 |
-| **Overall Accuracy** | - | - | **0.9919** | 1,115 |
+| **Overall Accuracy** | - | - | **99.19%** | 1,115 |
 
-### Confusion matrix analysis
+### Confusion Matrix
 
 ```text
-               Predicted Ham    Predicted Spam
-Actual Ham          966               4
-Actual Spam           5             140
+                   Predicted Ham    Predicted Spam
+Actual Ham (970)        966                4
+Actual Spam (145)         5              140
 ```
 
-- True Negatives (correctly identified ham): 966
-- False Positives (legitimate messages flagged as spam): 4
-- False Negatives (spam messages missed): 5
-- True Positives (correctly identified spam): 140
+- **False Positive Rate:** 0.41% (only 4 legitimate communications intercepted).
+- **False Negative Rate:** 3.45% (intercepts 96.55% of all spam transmissions).
 
-The low false-positive rate (0.41%) demonstrates that legitimate communications
-are preserved with minimal misclassification risk.
+---
 
-## Tech stack
+## Execution Instructions
 
-- Language: Python 3
-- Data manipulation: Pandas, NumPy
-- Natural language processing: NLTK, Regex
-- Machine learning: Scikit-learn (`MultinomialNB`, `CountVectorizer`, `LabelEncoder`)
+### Prerequisites
+Ensure dependencies and NLTK stopwords are present:
 
-Authored by Youssef Fellah.
-Developed for the Engineering Cycle at Mundiapolis University.
+```bash
+pip install numpy pandas scikit-learn nltk jupyter
+python3 -c "import nltk; nltk.download('stopwords')"
+```
+
+### Running the Notebook
+From the repository root or the `MultinomialNB` directory:
+
+```bash
+cd MultinomialNB
+jupyter notebook main.ipynb
+```
+
+Execute all cells sequentially to run data ingestion, text preprocessing, model fitting, and evaluation benchmarks.
+
+---
+
+## Technology Stack
+
+- **Language:** Python 3
+- **Data Engineering:** Pandas, NumPy
+- **Natural Language Processing:** NLTK, Regular Expressions (`re`)
+- **Machine Learning:** Scikit-learn (`CountVectorizer`, `MultinomialNB`, `LabelEncoder`, `metrics`)
+- **Institution:** Mundiapolis University, Engineering Cycle
+- **Author:** Youssef Fellah ([ind4x_](https://github.com/ind4x))

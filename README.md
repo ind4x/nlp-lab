@@ -1,98 +1,80 @@
-# Natural language processing laboratory portfolio
+# Natural Language Processing Laboratory Portfolio
 
-This repository contains practical laboratory implementations, mathematical
-derivations, and academic reference materials completed as part of the Natural
-Language Processing (NLP) and Artificial Intelligence curriculum in the
-Engineering Cycle at Mundiapolis University.
+This repository hosts practical implementations, machine learning algorithms, and
+analytical architectures developed for the Natural Language Processing (NLP) and
+Artificial Intelligence curriculum at Mundiapolis University.
 
-The portfolio covers foundational and applied topics in machine learning: raw
-text preprocessing, vector space modeling, probabilistic text classification,
-and from-scratch neural network implementation using analytical calculus and
-vectorized matrix operations.
+---
 
-## Laboratory overview
+## Laboratory Overview
 
-| Laboratory | Domain | Core methodology | Primary results | Reference |
+| Laboratory | Domain & Topic | Core Methodology | Primary Results | Reference |
 | :--- | :--- | :--- | :--- | :--- |
-| [MultinomialNB](./MultinomialNB) | Text classification | Regex sanitation, stopword filtering, CountVectorizer, Multinomial Naive Bayes | Accuracy: 99.19%<br>Spam F1: 0.97 | [Notebook](./MultinomialNB/main.ipynb) |
-| [NeuralNetwork](./NeuralNetwork) | Deep learning foundations | Multi-Layer Perceptron (2-2-1), analytical calculus, backpropagation, batch gradient descent | Exact convergence on XOR truth table | [Notebook](./NeuralNetwork/main.ipynb) |
-| [resources](./resources) | Optimization theory | Multiple linear regression, step-by-step MSE gradient derivation | Theoretical verification baseline | [Directory](./resources) |
+| **[MultinomialNB](./MultinomialNB)** | Supervised Text & Spam Classification | Regex sanitization, stopword filtering, CountVectorizer sparse modeling, Multinomial Naive Bayes | **Accuracy: 99.19%**<br>Spam F1: 0.97 | [Notebook](./MultinomialNB/main.ipynb) |
+| **[NeuralNetwork](./NeuralNetwork)** | Deep Learning Foundations from Scratch | 2-2-1 Multi-Layer Perceptron, vectorized NumPy calculus, analytical backpropagation via chain rule | **Exact XOR Separation**<br>(MSE $\to$ 0) | [Notebook](./NeuralNetwork/main.ipynb) |
+| **[resources](./resources)** | Theoretical Optimization Foundations | Multiple linear regression, analytical MSE gradient derivation, discrete iteration updates | Theoretical Verification Baseline | [Directory](./resources) |
 
-## Repository structure
+---
 
-```text
-.
-├── MultinomialNB/
-│   ├── README.md              # Pipeline documentation, metrics, and confusion matrix
-│   ├── SpamCollection.txt     # SMS Spam Collection dataset (5,574 labeled samples)
-│   └── main.ipynb             # Data cleaning, vectorization, training, and evaluation
-├── NeuralNetwork/
-│   ├── README.md              # Mathematical formulation and analytical derivations
-│   └── main.ipynb             # NumPy MLP implementation and XOR convergence verification
-├── resources/
-│   ├── README.md              # Overview of theoretical problem sets
-│   ├── Exercice_Regression_Descente_Gradient.pdf # Gradient descent problem formulation
-│   └── ex1.png                # Discrete manual gradient update baseline
-└── README.md                  # Main portfolio index and execution guide
-```
-
-## Setup and environment
+## General Running Instructions
 
 ### Prerequisites
 
-- Python 3.10 or higher
-- Git
+- **Python:** 3.10 or higher
+- **Git**
+- **Virtual Environment Tooling:** `venv`
 
-### Installation
+### Setup and Environment
 
-1. Clone the repository:
+1. **Clone the repository:**
    ```bash
-   git clone git@github.com:ind4x/NLP-LAB.git
-   cd NLP-LAB
+   git clone git@github.com:ind4x/nlp-lab.git
+   cd nlp-lab
    ```
 
-2. Create and activate a Python virtual environment:
+2. **Create and activate a virtual environment:**
    ```bash
    python3 -m venv .venv
    source .venv/bin/activate
    ```
 
-3. Install required runtime dependencies:
+3. **Install required dependencies:**
    ```bash
    pip install numpy pandas scikit-learn nltk jupyter
    ```
 
-4. Download NLTK linguistic corpora:
+4. **Download NLTK linguistic corpora:**
    ```bash
    python3 -c "import nltk; nltk.download('stopwords')"
    ```
 
-### Running the notebooks
+### Executing Laboratories
 
-Launch Jupyter Lab or Jupyter Notebook from the root directory:
+Launch Jupyter Notebook from the repository root:
 
 ```bash
 jupyter notebook
 ```
 
 Navigate to:
-- `MultinomialNB/main.ipynb` to execute the spam classification pipeline.
-- `NeuralNetwork/main.ipynb` to execute the manual analytical derivations and
-  XOR network training.
+- `MultinomialNB/main.ipynb` to execute the spam classification pipeline and review metrics.
+- `NeuralNetwork/main.ipynb` to verify analytical derivations and run XOR network training.
 
-Alternatively, open the repository in VS Code with the Jupyter extension
-installed and select the active `.venv` Python interpreter.
+---
 
-## Technology stack
+## Technology Stack
 
-- **Programming language:** Python 3
-- **Numerical computing:** NumPy
-- **Data analysis:** Pandas
-- **Natural language processing:** NLTK, Regular Expressions (`re`)
-- **Machine learning:** Scikit-learn (`CountVectorizer`, `MultinomialNB`, `LabelEncoder`, `train_test_split`, `metrics`)
-- **Interactive development:** Jupyter Notebook, VS Code
+- **Programming Language:** Python 3
+- **Numerical Computing:** NumPy
+- **Data Engineering:** Pandas
+- **Natural Language Processing:** NLTK, Regular Expressions (`re`)
+- **Machine Learning:** Scikit-learn (`CountVectorizer`, `MultinomialNB`, `LabelEncoder`, `metrics`)
+- **Interactive Development:** Jupyter Notebook, VS Code
 
-## Author
+---
+
+## Author & Academic Affiliation
 
 - **Author:** Youssef Fellah ([ind4x_](https://github.com/ind4x))
-- **Institution:** Mundiapolis University, Engineering Cycle
+- **Program:** Engineering Cycle (Software Engineering & Architecture)
+- **Institution:** Mundiapolis University
