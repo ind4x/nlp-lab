@@ -11,6 +11,7 @@ Artificial Intelligence curriculum at Mundiapolis University.
 | Laboratory | Domain & Topic | Core Methodology | Primary Results | Reference |
 | :--- | :--- | :--- | :--- | :--- |
 | **[file-manipulation](./file-manipulation)** | Document Ingestion & Corpus Engineering | File descriptor I/O, cursor seek, UTF-8 multilingual normalization, tabular data (CSV/Excel), PDF stream extraction (PyPDF2), regex lexical matching | **Multi-Format Ingestion Pipeline**<br>Decoded corpora, PDF parsing & merging | [Notebook](./file-manipulation/main.ipynb) |
+| **[regular-expressions](./regular-expressions)** | Lexical Pattern Matching & Text Engineering | Verbose regex compilation (`re.VERBOSE`), named capture groups, zero-width lookaround assertions, dynamic callback substitutions, backreference deduplication, CSV serialization | **Corpus Sanitization & Extraction Pipeline**<br>Log auditing, contact validation, ISO date normalization, relational CSV mapping | [Notebook](./regular-expressions/main.ipynb) |
 | **[multinomial-nb](./multinomial-nb)** | Supervised Text & Spam Classification | Regex sanitization, stopword filtering, CountVectorizer sparse modeling, Multinomial Naive Bayes | **Accuracy: 99.19%**<br>Spam F1: 0.97 | [Notebook](./multinomial-nb/main.ipynb) |
 | **[neural-network](./neural-network)** | Deep Learning Foundations from Scratch | 2-2-1 Multi-Layer Perceptron, vectorized NumPy calculus, analytical backpropagation via chain rule | **Exact XOR Separation**<br>(MSE $\to$ 0) | [Notebook](./neural-network/main.ipynb) |
 | **[resources](./resources)** | Theoretical Optimization Foundations | Multiple linear regression, analytical MSE gradient derivation, discrete iteration updates | Theoretical Verification Baseline | [Directory](./resources) |
@@ -59,6 +60,7 @@ jupyter notebook
 
 Navigate to:
 - `file-manipulation/main.ipynb` to execute data ingestion, encoding verification, PDF stream parsing, and regex extraction.
+- `regular-expressions/main.ipynb` to execute server log parsing, directory validation, text normalization, and CSV extraction.
 - `multinomial-nb/main.ipynb` to execute the spam classification pipeline and review metrics.
 - `neural-network/main.ipynb` to verify analytical derivations and run XOR network training.
 
