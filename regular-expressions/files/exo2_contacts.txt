@@ -1,9 +1,0 @@
-Name: Amine El Fassi | Email: amine.elfassi@univ-cadi.ac.ma | Tel: +212 6 12 34 56 78
-Name: Salma Benali | Email: salma_benali@gmail.com | Tel: 06-61-23-45-67
-Name: John Smith | Email: john.smith@@company.com | Tel: 0612345678
-Name: Yassine Idrissi | Email: y.idrissi@outlook.fr | Tel: (+212) 661 234 567
-Name: Lina O'Brien | Email: lina.obrien@my-startup.io | Tel: 00212 6 98 76 54 32
-Name: Bad Entry | Email: bad..dots@example.com | Tel: 12345
-Name: Omar Tazi | Email: omar.tazi@example | Tel: +212612345678
-Name: Kenza Alaoui | Email: kenza.alaoui@gmail.com | Tel: 07 11 22 33 44
-Name: Hamza Berrada | Email: hamza@univ-cadi.ac.ma | Tel: +212 7 00 11 22 33
