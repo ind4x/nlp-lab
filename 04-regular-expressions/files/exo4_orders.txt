@@ -1,0 +1,32 @@
+=== ORDER #1042 ===
+Date: 2026-02-03
+Customer: Amine El Fassi <amine@example.com>
+Items:
+  - 2 x USB-C Cable @ 9.99
+  - 1 x Laptop Stand @ 34.50
+Status: SHIPPED
+ 
+=== ORDER #1043 ===
+Date: 2026-02-04
+Customer: Salma Benali <salma.benali@mail.ma>
+Items:
+  - 1 x Mechanical Keyboard @ 89.00
+  - 3 x Notebook A5 @ 2.50
+  - 1 x Desk Lamp @ 19.90
+Status: DELIVERED
+ 
+=== ORDER #1044 ===
+Date: 2026-02-06
+Customer: Guest User
+Items:
+  - 5 x HDMI Cable @ 7.25
+Status: CANCELLED
+ 
+=== ORDER #1045 ===
+Date: 2026-02-09
+Customer: Lina O'Brien <lina@my-startup.io>
+Items:
+  - 1 x 27" Monitor @ 249.00
+  - 2 x Webcam HD @ 45.00
+Status: PENDING
+
