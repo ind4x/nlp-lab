@@ -7,7 +7,7 @@ This laboratory explores advanced regular expressions (`re`) and lexical pattern
 ## Lab Structure
 
 ```text
-regular-expressions/
+04-regular-expressions/
 ├── README.md                          # Technical specification, regex architecture, and methodologies
 ├── docs/                              # Course specifications and assignment briefs
 │   └── TP2_Regex.pdf                  # Laboratory specification by Pr. Zouhair ELAMRANI ABOU ELASSAD
@@ -231,10 +231,10 @@ The implementation relies strictly on the Python Standard Library. No external t
 
 ### Running the Notebook
 
-From the repository root or the `regular-expressions` directory:
+From the repository root or the `04-regular-expressions` directory:
 
 ```bash
-cd regular-expressions
+cd 04-regular-expressions
 jupyter notebook main.ipynb
 ```
 

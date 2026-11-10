@@ -10,10 +10,11 @@ Artificial Intelligence curriculum at Mundiapolis University.
 
 | Laboratory | Domain & Topic | Core Methodology | Primary Results | Reference |
 | :--- | :--- | :--- | :--- | :--- |
-| **[file-manipulation](./file-manipulation)** | Document Ingestion & Corpus Engineering | File descriptor I/O, cursor seek, UTF-8 multilingual normalization, tabular data (CSV/Excel), PDF stream extraction (PyPDF2), regex lexical matching | **Multi-Format Ingestion Pipeline**<br>Decoded corpora, PDF parsing & merging | [Notebook](./file-manipulation/main.ipynb) |
-| **[regular-expressions](./regular-expressions)** | Lexical Pattern Matching & Text Engineering | Verbose regex compilation (`re.VERBOSE`), named capture groups, zero-width lookaround assertions, dynamic callback substitutions, backreference deduplication, CSV serialization | **Corpus Sanitization & Extraction Pipeline**<br>Log auditing, contact validation, ISO date normalization, relational CSV mapping | [Notebook](./regular-expressions/main.ipynb) |
-| **[multinomial-nb](./multinomial-nb)** | Supervised Text & Spam Classification | Regex sanitization, stopword filtering, CountVectorizer sparse modeling, Multinomial Naive Bayes | **Accuracy: 99.19%**<br>Spam F1: 0.97 | [Notebook](./multinomial-nb/main.ipynb) |
-| **[neural-network](./neural-network)** | Deep Learning Foundations from Scratch | 2-2-1 Multi-Layer Perceptron, vectorized NumPy calculus, analytical backpropagation via chain rule | **Exact XOR Separation**<br>(MSE $\to$ 0) | [Notebook](./neural-network/main.ipynb) |
+| **[01-multinomial-nb](./01-multinomial-nb)** | Supervised Text & Spam Classification | Regex sanitization, stopword filtering, CountVectorizer sparse modeling, Multinomial Naive Bayes | **Accuracy: 99.19%**<br>Spam F1: 0.97 | [Notebook](./01-multinomial-nb/main.ipynb) |
+| **[02-neural-network](./02-neural-network)** | Deep Learning Foundations from Scratch | 2-2-1 Multi-Layer Perceptron, vectorized NumPy calculus, analytical backpropagation via chain rule | **Exact XOR Separation**<br>(MSE $\to$ 0) | [Notebook](./02-neural-network/main.ipynb) |
+| **[03-file-manipulation](./03-file-manipulation)** | Document Ingestion & Corpus Engineering | File descriptor I/O, cursor seek, UTF-8 multilingual normalization, tabular data (CSV/Excel), PDF stream extraction (PyPDF2), regex lexical matching | **Multi-Format Ingestion Pipeline**<br>Decoded corpora, PDF parsing & merging | [Notebook](./03-file-manipulation/main.ipynb) |
+| **[04-regular-expressions](./04-regular-expressions)** | Lexical Pattern Matching & Text Engineering | Verbose regex compilation (`re.VERBOSE`), named capture groups, zero-width lookaround assertions, dynamic callback substitutions, backreference deduplication, CSV serialization | **Corpus Sanitization & Extraction Pipeline**<br>Log auditing, contact validation, ISO date normalization, relational CSV mapping | [Notebook](./04-regular-expressions/main.ipynb) |
+| **[05-spaCy-NLTK-tokenisation](./05-spaCy-NLTK-tokenisation)** | Word Tokenisation & Sentence Boundary Disambiguation | Lexical parsing, orthographic shape extraction, contraction/clitic splitting, zero-copy span slicing, Arabic script processing, dependency parsing (spaCy), Punkt unsupervised collocations (NLTK), custom pipeline component injection | **Benchmark & Disambiguation Suite**<br>spaCy vs. NLTK evaluations, custom boundary pipeline | [Notebook](./05-spaCy-NLTK-tokenisation/main.ipynb) |
 | **[resources](./resources)** | Theoretical Optimization Foundations | Multiple linear regression, analytical MSE gradient derivation, discrete iteration updates | Theoretical Verification Baseline | [Directory](./resources) |
 
 ---
@@ -42,12 +43,13 @@ Artificial Intelligence curriculum at Mundiapolis University.
 
 3. **Install required dependencies:**
    ```bash
-   pip install numpy pandas scikit-learn nltk openpyxl PyPDF2 jupyter
+   pip install numpy pandas scikit-learn nltk openpyxl PyPDF2 spacy jupyter
    ```
 
-4. **Download NLTK linguistic corpora:**
+4. **Download language models and NLTK linguistic corpora:**
    ```bash
-   python3 -c "import nltk; nltk.download('stopwords')"
+   python3 -m spacy download en_core_web_sm
+   python3 -c "import nltk; nltk.download('stopwords'); nltk.download('punkt'); nltk.download('punkt_tab')"
    ```
 
 ### Executing Laboratories
@@ -59,10 +61,11 @@ jupyter notebook
 ```
 
 Navigate to:
-- `file-manipulation/main.ipynb` to execute data ingestion, encoding verification, PDF stream parsing, and regex extraction.
-- `regular-expressions/main.ipynb` to execute server log parsing, directory validation, text normalization, and CSV extraction.
-- `multinomial-nb/main.ipynb` to execute the spam classification pipeline and review metrics.
-- `neural-network/main.ipynb` to verify analytical derivations and run XOR network training.
+- `01-multinomial-nb/main.ipynb` to execute the spam classification pipeline and review metrics.
+- `02-neural-network/main.ipynb` to verify analytical derivations and run XOR network training.
+- `03-file-manipulation/main.ipynb` to execute data ingestion, encoding verification, PDF stream parsing, and regex extraction.
+- `04-regular-expressions/main.ipynb` to execute server log parsing, directory validation, text normalization, and CSV extraction.
+- `05-spaCy-NLTK-tokenisation/main.ipynb` to execute lexical tokenisation, orthographic shape analysis, Arabic script processing, and sentence boundary disambiguation.
 
 ---
 
@@ -72,7 +75,7 @@ Navigate to:
 - **Numerical Computing:** NumPy
 - **Data Engineering:** Pandas
 - **Document & Spreadsheet Processing:** PyPDF2, Openpyxl
-- **Natural Language Processing:** NLTK, Regular Expressions (`re`)
+- **Natural Language Processing:** spaCy (`en_core_web_sm`), NLTK (`stopwords`, `punkt`), Regular Expressions (`re`)
 - **Machine Learning:** Scikit-learn (`CountVectorizer`, `MultinomialNB`, `LabelEncoder`, `metrics`)
 - **Interactive Development:** Jupyter Notebook, VS Code
 
